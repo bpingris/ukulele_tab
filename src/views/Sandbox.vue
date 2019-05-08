@@ -14,7 +14,7 @@
 
       <v-icon v-else>keyboard_arrow_left</v-icon>
     </v-btn>
-    <v-navigation-drawer fixed clipped app right v-model="drawer">
+    <v-navigation-drawer fixed clipped app right v-model="drawer" :width="320">
       <v-list dense>
         <span class="grayscalee">
           <chord-vue
@@ -30,7 +30,7 @@
       </v-list>
     </v-navigation-drawer>
     <v-flex xs12>
-      <v-card class="ma-5">
+      <v-card class="ma-3 mt-5">
         <items-saved-vue @click="askChangeTab"/>
       </v-card>
     </v-flex>

@@ -7,10 +7,13 @@ TODO:
 - [x] Chord component: display name and strings
 - [x] Field with chords to pick up
 - [x] Field with the tab
-- [ ] More chords
-    - [ ] Host them on a db or something and put it on a server (firebase / serverless)
+- [x] More chords
+    - [x] Host them on a db or something and put it on a server (firebase / serverless)
 - [ ] Open and save tabs
+  - [ ] WIP: tabs are saved locally in the localstorage, not 100% working
+  - [ ] When we save a tab, check if one already exists with the same name and ask if we can replace it
 - [ ] Better UI/UX: right now there isn't a design, it's just SVGs component without style or anything
+  - [ ] Vuetify has been integrated, it's better but need some adjustments
 
 ## Chord component
 This component takes a name and an Array of Array containing the points to press to play the chord.
@@ -27,12 +30,12 @@ Vue.component('chord', Chord);
 ```
 
 ## Design
-I might use Vuetify because it's easy to use and it's material design so it works well.
+I use Vuetify to power the application
 
 ## Improvement
-- Add a show/hide menu that contains the chords, might use the vuetify drawer.
-- Add a Play button: tabs go fullscreen and there is a slideshow of the chords
-- Save the tabs on the localstorage it's easy and this ain't a bank so we don't care about security (it's just music lewl)
+- [x] Add a show/hide menu that contains the chords, might use the vuetify drawer.
+- [] Add a Play button: tabs go fullscreen and there is a slideshow of the chords, maybe integrate an automatic and slow scroll
+- [x] Save the tabs on the localstorage it's easy and this ain't a bank so we don't care about security (it's just music lewl)
 
 ## PWA Support
 Investigate the PWA support with VueJS, might be interesting
