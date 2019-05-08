@@ -1,6 +1,6 @@
 <template>
-  <svg height="170" width="150" @click="clicked">
-    <text text-anchor="middle" x="75" y="24" font-family="Verdana" font-size="30">{{name}}</text>
+  <svg height="170" width="150" @click="clicked" :class="classes">
+    <text text-anchor="middle" x="75" y="24" font-family="Roboto" font-size="30">{{name}}</text>
 
     <line class="up" x1="30" x2="120" y1="30" y2="30"></line>
     <line class="line" x1="30" x2="120" y1="60" y2="60"></line>
@@ -17,11 +17,19 @@
     <circle
       v-for="(item, index) in points"
       :key="index"
+      :cx="placeX(item.string)"
+      :cy="placeY(item.case)"
+      fill="black"
+      r="10"
+    ></circle>
+    <!-- <circle
+      v-for="(item, index) in points"
+      :key="index"
       :cx="placeX(item[0])"
       :cy="placeY(item[1])"
       fill="black"
       r="10"
-    ></circle>
+    ></circle>-->
   </svg>
 </template>
 
@@ -34,7 +42,17 @@ export default {
     },
     points: {
       type: Array,
-      default: () => [[4, 3]]
+      default: () => [
+        {
+          string: 4,
+          case: 3
+        }
+      ]
+      // default: () => [[4, 3]]
+    },
+    size: {
+      type: String,
+      default: "normal"
     }
   },
   methods: {
@@ -43,6 +61,14 @@ export default {
     clicked() {
       const { name, points } = this;
       this.$emit("click", { name, points });
+    }
+  },
+  computed: {
+    classes() {
+      return {
+        "chord-small": this.size === "small",
+        "chord-large": this.size === "large"
+      };
     }
   }
 };
@@ -60,5 +86,11 @@ export default {
 .up {
   stroke: brown;
   stroke-width: 5;
+}
+.chord-small {
+  transform: scale(0.8);
+}
+.chord-large {
+  transform: scale(1.2);
 }
 </style>
