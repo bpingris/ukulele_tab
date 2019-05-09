@@ -49,9 +49,11 @@
           </v-container>
           <small>*Champs obligatoire</small>
         </v-card-text>
+        <v-alert v-model="alert" type="warning">Cet accord existe déjà</v-alert>
+
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="blue darken-1" flat @click="closeDialog">Fermer</v-btn>
+          <v-btn @click="closeDialog" color="blue darken-1" flat>Fermer</v-btn>
           <v-btn :loading="loading" color="blue darken-1" flat @click="saveChord">Sauvegarder</v-btn>
         </v-card-actions>
       </v-card>
@@ -60,6 +62,8 @@
 </template>
 
 <script>
+import firebase from "@/services/firebase";
+
 export default {
   props: {
     chordsRef: {
@@ -71,6 +75,7 @@ export default {
     return {
       dialog: false,
       loading: false,
+      alert: false,
       chordName: "",
       chordFingers: [
         {
@@ -91,19 +96,30 @@ export default {
       this.dialog = false;
       this.chordName = "";
       this.chordFingers = [{ string: 0, case: 0 }];
+      this.alert = false;
     },
     async saveChord() {
+      if (this.chordName === "") {
+        return;
+      }
       this.loading = true;
       const points = this.chordFingers.map(o => ({
         case: parseInt(o.case),
         string: parseInt(o.string)
       }));
       try {
-        const res = this.chordsRef.add({
-          name: this.chordName,
-          points
-        });
-        this.$emit("added", true);
+        const zz = await this.chordsRef
+          .where("name", "==", this.chordName)
+          .get();
+        if (zz.empty) {
+          const res = this.chordsRef.add({
+            name: this.chordName,
+            points
+          });
+          this.$emit("added", true);
+        } else {
+          this.alert = true;
+        }
       } catch (err) {
         this.$emit("added", false);
       }

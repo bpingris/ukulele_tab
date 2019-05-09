@@ -48,11 +48,14 @@ export default {
           case: 3
         }
       ]
-      // default: () => [[4, 3]]
     },
     size: {
       type: String,
       default: "normal"
+    },
+    color: {
+      type: String,
+      default: "black"
     }
   },
   methods: {
@@ -76,15 +79,15 @@ export default {
 
 <style scoped>
 .line {
-  stroke: rgba(0, 0, 0, 0.431);
+  stroke: #333;
   stroke-width: 1;
 }
 .string {
-  stroke: black;
+  stroke: #111;
   stroke-width: 2;
 }
 .up {
-  stroke: brown;
+  stroke: #111;
   stroke-width: 5;
 }
 .chord-small {

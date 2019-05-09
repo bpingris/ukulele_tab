@@ -8678,6 +8678,11 @@ vuefire@^2.0.0-alpha.22:
   dependencies:
     "@posva/vuefire-core" "^1.1.1"
 
+vuetify-confirm@^0.2.5:
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/vuetify-confirm/-/vuetify-confirm-0.2.5.tgz#c00a8c857fd6eaea0e93a5354df4fd21eeaae2f8"
+  integrity sha512-UhFI5zdnGuouDZZOMhVYwkPw1/f9Uj+B2OMT7BauhUktdGdkzjGltHxZCuXSMjimlLKp3CKzPOuYaq0523eFYA==
+
 vuetify-dialog@^0.3.4:
   version "0.3.4"
   resolved "https://registry.yarnpkg.com/vuetify-dialog/-/vuetify-dialog-0.3.4.tgz#970f83602dfc0d1737d33d80fe5f04c857224896"
