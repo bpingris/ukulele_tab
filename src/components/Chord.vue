@@ -70,7 +70,8 @@ export default {
     classes() {
       return {
         "chord-small": this.size === "small",
-        "chord-large": this.size === "large"
+        "chord-large": this.size === "large",
+        "chord-xl": this.size === "xl"
       };
     }
   }
@@ -95,5 +96,8 @@ export default {
 }
 .chord-large {
   transform: scale(1.2);
+}
+.chord-xl {
+  transform: scale(1.6);
 }
 </style>

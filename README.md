@@ -14,6 +14,10 @@ TODO:
   - [ ] When we save a tab, check if one already exists with the same name and ask if we can replace it
 - [ ] Better UI/UX: right now there isn't a design, it's just SVGs component without style or anything
   - [ ] Vuetify has been integrated, it's better but need some adjustments
+- [ ] Better "player"
+  - [ ] add animation
+  - [ ] strumming pattern
+  - [ ] name of the song
 
 ## Chord component
 This component takes a name and an Array of Array containing the points to press to play the chord.
@@ -34,8 +38,9 @@ I use Vuetify to power the application
 
 ## Improvement
 - [x] Add a show/hide menu that contains the chords, might use the vuetify drawer.
-- [] Add a Play button: tabs go fullscreen and there is a slideshow of the chords, maybe integrate an automatic and slow scroll
 - [x] Save the tabs on the localstorage it's easy and this ain't a bank so we don't care about security (it's just music lewl)
+- [x] Add a Play button: tabs go fullscreen and there is a slideshow of the chords, maybe integrate an automatic and slow scroll
+  - [ ] A fullsreen modal shows up and display the current chord and the next one with a progress bar, it's dope!
 
 ## PWA Support
 Investigate the PWA support with VueJS, might be interesting

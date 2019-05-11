@@ -35,6 +35,24 @@
       </v-card>
     </v-flex>
     <v-flex xs12>
+      <v-layout justify-center wrap row>
+        <v-flex xs12>
+          <div class="text-xs-center">
+            <v-btn @click="player = true" round color="blue darken-4" dark>Jouer</v-btn>
+          </div>
+        </v-flex>
+        <v-flex xs12>
+          <div class="text-xs-center">
+            <v-text-field
+              style="width: 150px; margin: 0 auto"
+              type="number"
+              label="Vitesse"
+              v-model="speed"
+            ></v-text-field>
+          </div>
+        </v-flex>
+      </v-layout>
+      <!-- <v-btn v-else @click="stopScroll">stop</v-btn> -->
       <v-card class="ma-3 mt-5 py-5 elevation-10">
         <v-btn color="primary" fab absolute top left @click="promptSave" v-if="selected.length > 0">
           <v-icon>save</v-icon>
@@ -53,6 +71,7 @@
     </v-flex>
     <prompt-vue title="Sauvegarder votre morceau" ref="prompt" @confirm="saveTabs"></prompt-vue>
     <confirm-vue title="Etes-vous sûr de vouloir changer ?" ref="confirm" @yes="changeTab"></confirm-vue>
+    <player-vue v-if="player" :tab="selected" v-model="player" :speed="speed"></player-vue>
   </v-layout>
 </template>
 
@@ -62,13 +81,16 @@ import PromptVue from "@/components/Prompt";
 import ConfirmVue from "@/components/Confirm";
 import ChordVue from "@/components/Chord";
 import ItemsSavedVue from "@/components/Sandbox/ItemsSaved";
+import PlayerVue from "@/components/Sandbox/Player";
+import { setTimeout, clearTimeout } from "timers";
 
 export default {
   components: {
     ChordVue,
     PromptVue,
     ConfirmVue,
-    ItemsSavedVue
+    ItemsSavedVue,
+    PlayerVue
   },
   firestore() {
     return {
@@ -80,7 +102,10 @@ export default {
       selected: [],
       tmp: null,
       chords: null,
-      drawer: true
+      drawer: true,
+      scroll: null,
+      player: false,
+      speed: 60
     };
   },
   methods: {
@@ -115,6 +140,18 @@ export default {
     },
     changeTab(e) {
       this.selected = this.tmp;
+    },
+    async autoScroll() {
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      const pageScroll = () => {
+        window.scrollBy(0, 1);
+        this.scroll = setTimeout(pageScroll, 175);
+      };
+      pageScroll();
+    },
+    stopScroll() {
+      clearTimeout(this.scroll);
+      this.scroll = null;
     }
   }
 };
