@@ -57,6 +57,17 @@
         <v-btn color="primary" fab absolute top left @click="promptSave" v-if="selected.length > 0">
           <v-icon>save</v-icon>
         </v-btn>
+        <v-btn
+          color="warning"
+          fab
+          absolute
+          top
+          right
+          @click="selected = []"
+          v-if="selected.length > 0"
+        >
+          <v-icon>remove_circle</v-icon>
+        </v-btn>
         <div class="selected">
           <chord-vue
             class="selected-chord"

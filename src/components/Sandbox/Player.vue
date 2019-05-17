@@ -88,7 +88,7 @@ export default {
       if (this.timer) {
         clearInterval(this.timer);
       }
-      this.launch();
+      //   this.launch();
     },
     hideAndLaunch() {
       this.ct = false;
