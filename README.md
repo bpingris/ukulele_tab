@@ -40,7 +40,7 @@ I use Vuetify to power the application
 - [x] Add a show/hide menu that contains the chords, might use the vuetify drawer.
 - [x] Save the tabs on the localstorage it's easy and this ain't a bank so we don't care about security (it's just music lewl)
 - [x] Add a Play button: tabs go fullscreen and there is a slideshow of the chords, maybe integrate an automatic and slow scroll
-  - [ ] A fullsreen modal shows up and display the current chord and the next one with a progress bar, it's dope!
+  - [x] A fullsreen modal shows up and display the current chord and the next one with a progress bar, it's dope!
 
 ## PWA Support
 Investigate the PWA support with VueJS, might be interesting
